@@ -51,7 +51,7 @@ button:hover{transform:scale(1.06)}
 <div id="card"></div>
 <script>
 const card = document.getElementById("card");
-let name = "";
+let name = "Baby";
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 // floating background hearts
@@ -96,22 +96,9 @@ function confetti() {
 
 async function start() {
   card.innerHTML = "";
-  await say("Hi there! 👋", "h1");
-  await say("What’s your name?");
-  const input = document.createElement("input");
-  input.placeholder = "Type your name";
-  input.maxLength = 30;
-  const go = () => {
-    const v = input.value.trim();
-    if (!v) return input.focus();
-    name = v.charAt(0).toUpperCase() + v.slice(1);
-    intro();
-  };
-  input.addEventListener("keydown", e => { if (e.key === "Enter") go(); });
-  card.append(input, btn("Continue", "yes", go));
-  input.focus();
+  await say("Hi babyyy hehehehe 👋", "h1");
+  card.appendChild(btn("Continue", "yes", intro));
 }
-
 async function intro() {
   card.innerHTML = "";
   await say(`Nice to meet you, ${name}! ✨`, "h1");
