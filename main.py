@@ -101,14 +101,11 @@ async function start() {
 }
 async function intro() {
   card.innerHTML = "";
-  await say(`Nice to meet you, ${name}! ✨`, "h1");
-  await say("I’ve been practicing this for a while…");
-  await say("I built a whole website just to ask you something. 💻");
-  await say(`${name}, can I ask you something important?`);
+  await say("Baby, can I ask you something? ✨", "h1");
   const row = document.createElement("div");
   row.append(
     btn("Yes", "yes", main),
-    btn("No", "no", async () => { await say("Aww, okay… but I’ll keep the page open. 😢"); main(); })
+    btn("No", "no", async () => { await say("Aww, okay… 😢"); main(); })
   );
   row.style.display = "flex"; row.style.gap = "12px"; row.style.justifyContent = "center";
   card.appendChild(row);
