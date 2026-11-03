@@ -113,16 +113,20 @@ async function intro() {
 
 async function main() {
   card.innerHTML = "";
-  await say(`${name}, you make my day better without even trying.`);
-  await say("I’d really like to get to know you more, the proper way.");
-  await say(`${name}, may I court you? 🌹`, "h1");
+  await say("hey baby its been a month since we started talking una maulaw paka SAKO im so happy to know you babyy likee very very much jd like super much");
+  await say("i just want you too know that everytime na mag spend us time together the more i realize na how much i like you feel nako gi lumay ko nimo hmmm hmm kidding aside");
+  await say("i know month might not seem so long but i dont want to keep you guessing mn jd about sa feelings ko sa imo dili jd biya ko mo tuo sa akoa HAHAHAHAHAHA");
+  await say("i want to know you even more, deeper, sobra, grabe, and i want to show you mn that im serious sayo. unta unta untaaaa");
+  await say("kabalo pud ka that i dont want to rush you into anything mn i want us to take things at our own pace(PS. kabalo ko unsa ng pace hah!!!)");
+  await say("i just want the chance to show you that im serious ngani like seryoso jd its just likee ano kanang itss youuu that i wanttttt SOOOOOOOOOOOOOO MARIA ELAIZE ERECKA EGAY");
+  await say(`can court you? 🌹`, "h1");
 
   const pleading = [
-    "Are you sure? 🥺",
-    "Please? I even debugged this code for you…",
-    "I promise I’ll be a gentleman. 🌹",
-    "I’ll treat you to milk tea! 🧋",
-    "Last chance… my heart has a stack overflow. 💔",
+    "sure najd na?🥺",
+    "kawawa ako ana jd",
+    "sanay naman ko",
+    "baby jd ay,
+    "sad na ako💔",
   ];
   const arena = document.createElement("div");
   arena.id = "arena";
@@ -142,7 +146,7 @@ async function main() {
     card.classList.remove("shake"); void card.offsetWidth; card.classList.add("shake");
     if (attempts > pleading.length) {
       no.remove();
-      note.textContent = "The “No” button has been deleted. 😌";
+      note.textContent = wala kay choice ako najd ni😌";
     } else {
       note.textContent = pleading[attempts - 1];
       no.style.position = "absolute";
