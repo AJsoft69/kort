@@ -22,16 +22,14 @@ HTML = r"""
 <title>May I court you?</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff;
-  background:linear-gradient(135deg,#ff758c,#ff7eb3,#a18cd1,#fbc2eb);background-size:400% 400%;animation:bg 12s ease infinite;overflow:hidden}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:16px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3,#a18cd1,#fbc2eb);background-size:400% 400%;animation:bg 12s ease infinite;overflow-x:hidden}
 @keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 #card{position:relative;z-index:2;width:min(92vw,460px);padding:32px 26px;border-radius:24px;text-align:center;
   background:rgba(255,255,255,.2);backdrop-filter:blur(12px);box-shadow:0 20px 60px rgba(0,0,0,.2);animation:pop .7s ease}
 @keyframes pop{from{opacity:0;transform:translateY(24px) scale(.95)}to{opacity:1;transform:none}}
 h1{margin:0 0 14px;font-size:1.8rem}
 p{font-size:1.1rem;line-height:1.5;margin:0 0 12px}
-input{width:100%;font:inherit;padding:12px 14px;border-radius:14px;border:0;margin:8px 0 14px;text-align:center;color:#3a1f2b}
-input:focus{outline:3px solid #fff}
 button{font:inherit;font-weight:700;border:0;border-radius:14px;padding:12px 26px;cursor:pointer;transition:transform .2s}
 button:hover{transform:scale(1.06)}
 .yes{background:#fff;color:#e5446d;animation:pulse 1.4s infinite}
@@ -54,8 +52,7 @@ const card = document.getElementById("card");
 let name = "Baby";
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-// floating background hearts
-["💖","💕","🌹","✨","💗","🌸"].forEach((e, i) => {
+["💖","💕","🌹","✨","💗","🌸"].forEach(e => {
   for (let k = 0; k < 3; k++) {
     const s = document.createElement("span");
     s.className = "float";
@@ -71,7 +68,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 async function say(text, tag = "p") {
   const el = document.createElement(tag);
   card.appendChild(el);
-  for (const ch of text) { el.textContent += ch; await sleep(26); }
+  for (const ch of text) { el.textContent += ch; await sleep(14); }
   await sleep(250);
   return el;
 }
@@ -99,16 +96,36 @@ async function start() {
   await say("Hi babyyy hehehehe 👋", "h1");
   card.appendChild(btn("Continue", "yes", intro));
 }
+
 async function intro() {
   card.innerHTML = "";
   await say("Baby, can I ask you something? ✨", "h1");
   const row = document.createElement("div");
   row.append(
     btn("Yes", "yes", main),
-    btn("No", "no", async () => { await say("Aww, okay… 😢"); main(); })
+    btn("No", "no", sadNo)
   );
   row.style.display = "flex"; row.style.gap = "12px"; row.style.justifyContent = "center";
   card.appendChild(row);
+}
+
+async function sadNo() {
+  card.innerHTML = "";
+  const sad = await say("😢", "h1");
+  sad.style.fontSize = "4rem";
+  await say("Aww, okay…");
+  await sleep(1200);
+
+  card.innerHTML = "";
+  card.classList.remove("shake"); void card.offsetWidth; card.classList.add("shake");
+  const h = document.createElement("h1");
+  h.textContent = "balaka wala kay choice 😤";
+  h.style.animation = "pop .5s ease";
+  card.appendChild(h);
+  await sleep(2200);
+
+  main();
+
 }
 
 async function main() {
@@ -119,14 +136,14 @@ async function main() {
   await say("i want to know you even more, deeper, sobra, grabe, and i want to show you mn that im serious sayo. unta unta untaaaa");
   await say("kabalo pud ka that i dont want to rush you into anything mn i want us to take things at our own pace(PS. kabalo ko unsa ng pace hah!!!)");
   await say("i just want the chance to show you that im serious ngani like seryoso jd its just likee ano kanang itss youuu that i wanttttt SOOOOOOOOOOOOOO MARIA ELAIZE ERECKA EGAY");
-  await say(`can court you? 🌹`, "h1");
+  await say(`${name}, may I court you? 🌹`, "h1");
 
   const pleading = [
-    "sure najd na?🥺",
-    "kawawa ako ana jd",
+    "sure najd na?",
+    "kawawa ako super sobra",
     "sanay naman ko",
-    "baby jd ay,
-    "sad na ako💔",
+    "kinsa rajd ko",
+    "💔",
   ];
   const arena = document.createElement("div");
   arena.id = "arena";
@@ -146,7 +163,7 @@ async function main() {
     card.classList.remove("shake"); void card.offsetWidth; card.classList.add("shake");
     if (attempts > pleading.length) {
       no.remove();
-      note.textContent = wala kay choice ako najd ni😌";
+      note.textContent = "wala nakay choice ako najd ni😌";
     } else {
       note.textContent = pleading[attempts - 1];
       no.style.position = "absolute";
@@ -163,18 +180,13 @@ async function main() {
 async function celebrate() {
   card.innerHTML = "";
   confetti();
-  await say("🎉 YES!! 🎉", "h1");
-  await say(`Thank you, ${name}! You just made me the happiest person.`);
-  await say("Let me plan the first date… 🌹");
-  let idea = "Milk tea and a walk 🧋";
-  try {
-    const r = await fetch("/api/date");
-    idea = (await r.json()).idea;   // this comes from your Python code
-  } catch (e) {}
-  await say("First date idea: " + idea);
-  await say("The courtship begins… ❤️", "h1");
+  await say("🎉 YEYYYY!! 🎉", "h1");
+  await say("thank you for giving me a chance to court you be ur suitor hehehehe i promise ill do my best to make you feel loved, appreciated, respected, loyalty, faithfully, brave, generouse, generos, generus");
+  await say("papunta palang tayo sa exciting part andd again i dont want to rush anything i want to take my time to knoww youu moreee deeper ngani making memories with you pudd hehehhe");
+  await say("basta basta ill do my best to be someone you can trust and feel safe with... 💖");
   confetti();
 }
+
 
 start();
 </script>
