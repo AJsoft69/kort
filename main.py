@@ -135,8 +135,8 @@ async function main() {
   await say("i know month might not seem so long but i dont want to keep you guessing mn jd about sa feelings ko sa imo dili jd biya ko mo tuo sa akoa HAHAHAHAHAHA");
   await say("i want to know you even more, deeper, sobra, grabe, and i want to show you mn that im serious sayo. unta unta untaaaa");
   await say("kabalo pud ka that i dont want to rush you into anything mn i want us to take things at our own pace(PS. kabalo ko unsa ng pace hah!!!)");
-  await say("i just want the chance to show you that im serious ngani like seryoso jd its just likee ano kanang itss youuu that i wanttttt SOOOOOOOOOOOOOO MARIA ELAIZE ERECKA EGAY");
-  await say(`${name}, may I court you? 🌹`, "h1");
+  await say("i just want the chance to show you that im serious ngani like seryoso jd its just likee ano kanang itss youuu that i wanttttt SOOOOOOOOOOOOOO");
+  await say("MARIA ELAIZA ERECKA EGAY may I court you? 🌹", "h1");
 
   const pleading = [
     "sure najd na?",
@@ -180,8 +180,8 @@ async function main() {
 async function celebrate() {
   card.innerHTML = "";
   confetti();
-  await say("🎉 YEYYYY!! 🎉", "h1");
-  await say("thank you for giving me a chance to court you be ur suitor hehehehe i promise ill do my best to make you feel loved, appreciated, respected, loyalty, faithfully, brave, generouse, generos, generus");
+  await say("YEYYYY!! ", "h1");
+  await say("thank you for giving me a chance to court you and be ur suitor babyyy hehehehe i promise ill do my best to make you feel loved, appreciated, respected, loyalty, faithfully, brave, generouse, generos, generus");
   await say("papunta palang tayo sa exciting part andd again i dont want to rush anything i want to take my time to knoww youu moreee deeper ngani making memories with you pudd hehehhe");
   await say("basta basta ill do my best to be someone you can trust and feel safe with... 💖");
   confetti();
